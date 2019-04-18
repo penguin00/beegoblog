@@ -20,6 +20,8 @@ type Topic struct {
 	Id              int64
 	Uid             int64
 	Title           string
+	Category        string
+	Lables          string
 	Content         string `orm:"size(5000)"`
 	Attachment      string
 	Created         time.Time `orm:"index"`
@@ -40,18 +42,10 @@ type Reply struct {
 }
 
 func init() {
-
 	orm.RegisterModel(new(Category), new(Topic), new(Reply))
-	orm.RegisterDataBase("default", "mysql", "root:root@tcp(127.0.0.1:3306)/beegoblog?charset=utf8")
-	orm.RegisterDriver("mysql", orm.DRMySQL)
-	orm.RunSyncdb("default", false, true)
+	_ = orm.RegisterDataBase("default", "mysql", "root:root@tcp(127.0.0.1:3306)/beegoblog?charset=utf8")
+	_ = orm.RegisterDriver("mysql", orm.DRMySQL)
+	_ = orm.RunSyncdb("default", false, true)
 	orm.Debug = true
 
-}
-
-func TestGet() *Topic {
-	var DB = orm.NewOrm()
-	topic := new(Topic)
-	DB.QueryTable("topic").All(topic)
-	return topic
 }

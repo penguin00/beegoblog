@@ -1,35 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" content="text/html" http-equiv="Content-Type">
-    #http://www.staticfile.org/
-    <script type="text/javascript" src="http://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
-    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css"  href="../static/css/bootstrap.min.css">
+{{template "header"}}
+    	<title>首页 - 我的 beego 博客</title>
+  	</head>
+	
+	<body>
+		<div class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				{{template "navbar" .}}
+			</div>	
+		</div>
+		
+		<div class="container">
+			<div class="col-md-9">
+                {{range .Topics}}
+                <div class="page-header">
+                    <h1><a href="/topic/view/{{.Id}}">{{.Title}}</a></h1>
+                    <h6 class="text-muted">文章发表于 {{.Created}}，共有 {{.Views}} 次浏览， {{.ReplyCount}} 个评论</h6>	
+                    <p>
+                        {{.Content}}
+                    </p>
+                </div>
+                {{end}} 
+			</div>
+			
+			<div class="col-md-3">
+                <h3>文章分类</h3>
+                <ul>
+                    {{range .Categories}}
+                    <li><a href="/?cate={{.Title}}">{{.Title}}</a></li>
+                    {{end}}
+                </ul>
+			</div>
+		</div>
 
-
-    <title>首页-我的博客</title>
-</head>
-    <body>
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="">我的博客</a>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">首页</a></li>
-                <li><a href="/category">分类</a></li>
-                <li><a href="/topic">文章</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="container">
-        <div class="page-header">
-            <h1>我的第一篇博客</h1>
-            <h6 class="text-muted">文章发表于xx，共有xx次浏览，xx个评论</h6>
-            <p>
-                我的第一篇博客，内容是xxx
-            </p>
-        </div>
-    </div>
-
-    </body>
+		<script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.0.3/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+	</body>
 </html>
