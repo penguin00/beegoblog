@@ -39,7 +39,7 @@ func (l *LoginController) Post() {
 		l.Ctx.SetCookie("uname", uname, maxAge, "/")
 		l.Ctx.SetCookie("pwd", pwd, maxAge, "/")
 	}
-	l.Redirect("/login", 302)
+	l.Redirect("/", 302)
 	return
 
 }

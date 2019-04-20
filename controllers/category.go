@@ -13,7 +13,7 @@ func (c *CategoryController) Get() {
 	c.TplName = "category.html"
 	c.Data["isLogin"] = checkAccount(c.Ctx)
 	c.Data["isCategory"] = true
-	c.Data["categories"], _ = models.GetAllCategories()
+	c.Data["Categories"], _ = models.GetAllCategories()
 }
 func (c *CategoryController) Post() {
 

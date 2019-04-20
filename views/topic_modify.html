@@ -12,7 +12,7 @@
 		<div class="container">
 			<h1>修改文章</h1>
 			<form method="post" action="/topic" enctype="multipart/form-data">
-				<input type="hidden" name="tid" value="{{.Tid}}">
+				<input type="hidden" name="tid" value="{{.Topic.Id}}">
 				<div class="form-group">
 					<label>文章标题：</label>
 					<input type="text" class="form-control" name="title" value="{{.Topic.Title}}">
